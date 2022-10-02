@@ -1,0 +1,19 @@
+syntax = "proto3";
+option go_package = ".;pb";
+import "common.proto";
+
+message StreamMessage {
+  string clientId = 1;
+  string method = 2;
+  string body = 3;
+  int32 code = 4;
+  string message = 5;
+}
+
+message UpdateCountRequest {
+  int64 count = 2;
+}
+
+service Push {
+  rpc UpdateCount(UpdateCountRequest) returns(Empty);
+}
